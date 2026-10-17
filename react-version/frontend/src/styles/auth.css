@@ -1,0 +1,24 @@
+/* ====== AUTH GATE ====== */
+.auth-gate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:22px;overflow:auto;background:radial-gradient(circle at 12% -6%,rgba(213,173,70,.14),transparent 30rem),radial-gradient(circle at 88% 108%,rgba(121,174,235,.10),transparent 30rem),rgba(6,9,14,.985)}
+.auth-card{width:min(430px,100%);padding:30px 28px 24px;border:1px solid var(--line);background:linear-gradient(150deg,rgba(24,32,45,.96),rgba(11,15,23,.98));box-shadow:var(--shadow)}
+.auth-brand{display:flex;align-items:center;gap:11px;margin-bottom:6px}
+.auth-brand .brand-mark{width:38px;height:38px}
+.auth-brand b{font:600 17px/1.15 "Playfair Display",Georgia,serif}
+.auth-brand b span{color:var(--gold)}
+.auth-sub{margin:8px 0 18px;color:var(--text-faint);font-size:11px;line-height:1.6}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:18px;border:1px solid var(--line)}
+.auth-tab{padding:10px 6px;border:0;background:rgba(255,255,255,.02);color:var(--text-faint);font:10px/1 "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.18s}
+.auth-tab.active{background:rgba(213,173,70,.12);color:var(--gold-bright)}
+.auth-form .field{margin-bottom:12px;min-width:0}
+.auth-form label{display:block;margin-bottom:5px;color:var(--text-dim);font:9.5px/1 "DM Mono",monospace;letter-spacing:.07em;text-transform:uppercase}
+.auth-msg{min-height:16px;margin:2px 0 12px;color:var(--red);font-size:11px}
+.auth-msg.ok{color:var(--green)}
+.auth-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-soft);color:var(--text-faint);font-size:9.5px;line-height:1.55}
+.auth-gate .btn-primary{width:100%;min-height:42px}
+.auth-gate[hidden]{display:none!important}
+body.locked{overflow:hidden}
+/* ====== USER CHIP ====== */
+.user-chip{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.user-chip-name{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--gold-bright);font:500 10px/1 "DM Mono",monospace;letter-spacing:.05em}
+.user-chip .btn{min-height:28px;padding:6px 10px;font-size:8.5px}
+@media(max-width:620px){.user-chip-name{max-width:84px}.user-chip .btn{min-height:26px;padding:5px 9px}}

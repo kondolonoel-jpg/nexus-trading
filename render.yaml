@@ -1,0 +1,30 @@
+# Blueprint Render : « New + > Blueprint » puis choisir ce dépôt GitHub.
+services:
+  - type: web
+    name: nexus-trading
+    runtime: python
+    plan: free
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    # 1 seul worker : les boucles de fond (news, analyse, macro, alertes) ne doivent pas tourner en double.
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 90 server:app
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      # Clé de signature des sessions : générée une fois par Render, reste stable entre les redémarrages.
+      - key: NEXUS_SECRET
+        generateValue: true
+      # Alertes Telegram (optionnel) : à renseigner dans le tableau de bord Render.
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      # Pour servir la version React compilée à la place de l'interface par défaut :
+      # - key: NEXUS_STATIC
+      #   value: react-version/static
+    # Pour CONSERVER les comptes entre les redémarrages (plan payant requis), décommentez :
+    # disk:
+    #   name: nexus-data
+    #   mountPath: /opt/render/project/src/data
+    #   sizeGB: 1

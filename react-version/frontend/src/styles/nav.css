@@ -1,0 +1,23 @@
+/* ===== Menu regroupé (Trading / Marché / Suivi) ===== */
+.nav-links{align-items:center}
+.nav-group{position:relative}
+.nav-group-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 0;border:0;background:none;color:var(--text-dim);font:10px/1 "DM Mono",monospace;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:color .18s}
+.nav-group-btn::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);opacity:.7;transition:transform .2s}
+.nav-group-btn:hover,.nav-group.open .nav-group-btn,.nav-group.has-active .nav-group-btn{color:var(--gold-bright)}
+.nav-group.open .nav-group-btn::after{transform:rotate(-135deg);margin-top:2px}
+.nav-menu{position:absolute;left:-16px;top:calc(100% + 14px);z-index:70;display:none;flex-direction:column;min-width:176px;padding:8px 0;border:1px solid var(--line);background:rgba(10,14,22,.98);backdrop-filter:blur(16px);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.nav-menu::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+.nav-group.open .nav-menu{display:flex}
+.nav-menu a{padding:10px 18px;white-space:nowrap}
+.nav-menu a::after{display:none}
+@media(max-width:920px){
+  .nav-group{display:contents}
+  .nav-group-btn{display:none}
+  .nav-menu{position:static;display:flex;min-width:0;padding:0;border:0;background:none;box-shadow:none;backdrop-filter:none}
+  .nav-menu::before{display:none}
+  .nav-menu a{padding:11px 0 11px 14px;border-bottom:1px solid var(--line-soft)}
+}
+/* sauvegarde rapide */
+#quickBackup.nudge{border-color:var(--amber);color:var(--amber);animation:nudge 2.2s ease-in-out infinite}
+@keyframes nudge{50%{box-shadow:0 0 0 3px rgba(231,169,76,.18)}}
+@media(max-width:1100px){#quickBackup span{display:none}}
